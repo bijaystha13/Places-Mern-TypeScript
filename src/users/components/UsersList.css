@@ -1,0 +1,65 @@
+/* .users-list {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  width: 90%;
+  max-width: 50rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+} */
+
+.users-list {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  width: 90%;
+  max-width: 50rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  gap: 1.5rem 1rem;
+  perspective: 1000px;
+}
+
+.users-list > * {
+  animation: fadeIn 0.5s ease-out both;
+}
+
+.users-list > *:nth-child(1) {
+  animation-delay: 0.05s;
+}
+.users-list > *:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.users-list > *:nth-child(3) {
+  animation-delay: 0.15s;
+}
+.users-list > *:nth-child(4) {
+  animation-delay: 0.2s;
+}
+.users-list > *:nth-child(5) {
+  animation-delay: 0.25s;
+}
+.users-list > *:nth-child(6) {
+  animation-delay: 0.3s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 600px) {
+  .users-list {
+    gap: 1rem;
+    width: 95%;
+  }
+}
