@@ -1,6 +1,7 @@
 import UsersList from "../components/UsersList";
+import { type User } from "../components/type";
 
-const USERS = [
+const USERS: User[] = [
   {
     id: "u1",
     name: "BIJAY SHRESTHA",
