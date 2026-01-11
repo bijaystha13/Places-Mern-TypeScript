@@ -7,15 +7,15 @@ import { useRef } from "react";
 interface ModalProps {
   className?: string;
   style?: React.CSSProperties;
-  children: React.ReactNode;
+  children?: React.ReactNode;
   headerClass?: string;
-  header: string;
+  header?: string;
   onSubmit?: () => void;
   contentClass?: string;
   footerClass?: string;
   footer?: React.ReactNode;
-  show: boolean;
-  onCancel: () => void;
+  show?: boolean;
+  onCancel?: () => void;
 }
 
 export default function Modal(props: ModalProps) {

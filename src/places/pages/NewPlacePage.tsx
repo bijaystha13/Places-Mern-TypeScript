@@ -1,54 +1,15 @@
-import React, { useCallback, useReducer } from "react";
 import Input from "../../shared/FormElements/Input";
 import {
   VALIDATOR_MINLENGTH,
   VALIDATOR_REQUIRE,
 } from "../../shared/util/validators";
-import "./NewPlace.css";
+import "./Place.css";
 import Button from "../../shared/FormElements/Button";
-
-type FormState = {
-  inputs: Record<string, { value: string; isValid: boolean }>;
-  isValid: boolean;
-};
-
-type FormAction =
-  | {
-      type: "INPUT_CHANGE";
-      value: string;
-      isValid: boolean;
-      inputId: string;
-    }
-  | { type: "RESET" };
-
-function formReducer(state: FormState, action: FormAction) {
-  switch (action.type) {
-    case "INPUT_CHANGE": {
-      let formIsValid = true;
-      for (const inputId in state.inputs) {
-        if (inputId === action.inputId) {
-          formIsValid = formIsValid && action.isValid;
-        } else {
-          formIsValid = formIsValid && state.inputs[inputId].isValid;
-        }
-      }
-      return {
-        ...state,
-        inputs: {
-          ...state.inputs,
-          [action.inputId]: { value: action.value, isValid: action.isValid },
-        },
-        isValid: formIsValid,
-      };
-    }
-    default:
-      return state;
-  }
-}
+import { useForm } from "../../shared/hooks/form-hook";
 
 export default function NewPlacePage() {
-  const [formState, dispatch] = useReducer(formReducer, {
-    inputs: {
+  const [formState, inputHandler] = useForm(
+    {
       title: {
         value: "",
         isValid: false,
@@ -57,15 +18,12 @@ export default function NewPlacePage() {
         value: "",
         isValid: false,
       },
+      address: {
+        value: "",
+        isValid: false,
+      },
     },
-    isValid: false,
-  });
-
-  const inputHandler = useCallback(
-    (id: string, value: string, isValid: boolean) => {
-      dispatch({ type: "INPUT_CHANGE", value, isValid, inputId: id });
-    },
-    [] // dependencies that the function uses (state, props, etc.)
+    false
   );
 
   function placeSubmitHandler(event: React.FormEvent<HTMLFormElement>) {
