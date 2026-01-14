@@ -74,6 +74,7 @@ export default function Input(props: InputProps) {
     props.element === "input" ? (
       <input
         id={props.id}
+        type={props.type}
         placeholder={props.placeholder}
         onChange={changeHandler}
         value={inputState.value}

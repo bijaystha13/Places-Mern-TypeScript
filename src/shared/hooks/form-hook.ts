@@ -1,7 +1,7 @@
 import { useCallback, useReducer } from "react";
 
 type FormState = {
-  inputs: Record<string, { value: string; isValid: boolean }>;
+  inputs: Record<string, { value: string | undefined; isValid: boolean }>;
   isValid: boolean;
 };
 
@@ -26,6 +26,9 @@ function formReducer(state: FormState, action: FormAction) {
     case "INPUT_CHANGE": {
       let formIsValid = true;
       for (const inputId in state.inputs) {
+        if (!state.inputs[inputId]) {
+          continue;
+        }
         if (inputId === action.inputId) {
           formIsValid = formIsValid && action.isValid;
         } else {
