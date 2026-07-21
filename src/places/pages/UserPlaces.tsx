@@ -9,7 +9,7 @@ const DUMMY_PLACES: Place[] = [
     title: "BIJAY",
     description: "YOHAHA",
     image:
-      "https://i.pinimg.com/736x/96/d0/e0/96d0e0011a772fde0b37a98ba2f82a3a.jpg",
+      "https://i.pinimg.com/736x/c6/94/f3/c694f381a882ce49c591e2f441f0a74e.jpg",
     address: "CAUSA",
     coordinates: { lat: 40.7484405, lng: -73.9878584 },
     creatorId: "u1",
@@ -29,7 +29,7 @@ const DUMMY_PLACES: Place[] = [
 export default function UserPlaces() {
   const userId = useParams().userId;
   const loadedPlace = DUMMY_PLACES.filter(
-    (place) => place.creatorId === userId
+    (place) => place.creatorId === userId,
   );
   return <PlaceList items={loadedPlace} />;
 }
